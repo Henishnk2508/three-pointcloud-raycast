@@ -1,0 +1,73 @@
+{
+  "name": "three-pointcloud-raycast",
+  "version": "0.1.0",
+  "description": "BVH-accelerated drop-in replacement for THREE.Raycaster on Potree point clouds, returning exactly the same hits.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Henishnk2508/three-pointcloud-raycast.git"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "check:pkg": "publint && attw --pack .",
+    "changeset": "changeset",
+    "release": "npm run build && changeset publish",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build && npm run check:pkg"
+  },
+  "peerDependencies": {
+    "three": ">=0.161.0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@changesets/cli": "^2.27.0",
+    "@eslint/js": "^9.0.0",
+    "@types/three": "0.161.2",
+    "eslint": "^9.0.0",
+    "prettier": "^3.3.0",
+    "publint": "^0.2.12",
+    "three": "0.161.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^2.1.0"
+  },
+  "keywords": [
+    "three",
+    "threejs",
+    "raycast",
+    "raycaster",
+    "point-cloud",
+    "pointcloud",
+    "potree",
+    "bvh"
+  ]
+}
